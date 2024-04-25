@@ -28,6 +28,7 @@ namespace GravGrongle
         void Start()
         {
             Utilla.Events.GameInitialized += OnGameInitialized;
+            Debug.Log("Grongle is cool B)");
         }
 
         void OnEnable()

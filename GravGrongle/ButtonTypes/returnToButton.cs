@@ -37,6 +37,7 @@ namespace GravGrongle.ButtonTypes
             if (grongle != null)
             {
                 grongle.transform.position = grongleButton.transform.position;
+                GrongleNetworking.SendTeleportEvent(grongleButton.transform.position);
             }
 
             else

@@ -52,10 +52,11 @@ namespace GravGrongle
             rb.drag = 0.5f;
             rb.angularDrag = 0.5f;
             rb.useGravity = true;
+            gronglePrefab.SetLayer(UnityLayer.Prop);
+
 
             GameObject grongle = Instantiate(gronglePrefab);
             grongle.AddComponent<OTL>();
-            grongle.SetLayer(UnityLayer.Prop);
             grongle.AddComponent<DevHoldable>();
 
             Debug.Log("Grongle collider size: " + meshCollider.bounds.size);

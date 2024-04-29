@@ -1,4 +1,5 @@
-﻿using System;
+﻿//Not used anywhere so commented out
+/*using System;
 using UnityEngine;
 
 namespace GravGrongle.ButtonTypes
@@ -49,3 +50,4 @@ namespace GravGrongle.ButtonTypes
         }
     }
 }
+*/

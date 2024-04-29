@@ -1,6 +1,5 @@
 using GorillaLocomotion;
 using UnityEngine;
-using UnityEngine.XR;
 
 namespace GravGrongle
 {
@@ -35,6 +34,7 @@ namespace GravGrongle
                 {
                     Debug.LogWarning("Grongle Rigidbody component not found.");
                 }
+                GrongleNetworking.SendGrabEvent(isLeft);
             }
             else
             {
@@ -58,6 +58,7 @@ namespace GravGrongle
                         (Player.Instance.rightControllerTransform.position - previousRightControllerPosition);
 
                     rigidbody.velocity = throwDirection / Time.deltaTime * ThrowForce;
+                    GrongleNetworking.SendReleaseEvent(rigidbody.velocity);
                 }
                 else
                 {

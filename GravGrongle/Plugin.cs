@@ -1,15 +1,10 @@
 ﻿using System;
-using System.EnterpriseServices;
-using System.IO;
 using System.Reflection;
 using BepInEx;
 using GravGrongle.ButtonTypes;
-using OculusSampleFramework;
+using Photon.Pun;
 using UnityEngine;
-using UnityEngine.Animations.Rigging;
-using UnityEngine.XR;
 using Utilla;
-using static UnityEngine.UI.DefaultControls;
 
 namespace GravGrongle
 {
@@ -18,16 +13,14 @@ namespace GravGrongle
     [BepInPlugin(PluginInfo.GUID, PluginInfo.Name, PluginInfo.Version)]
     public class Plugin : BaseUnityPlugin
     {
-        bool inRoom;
+        public static bool inRoom;
         public GameObject grongle;
         public GameObject gmenu;
         public Vector3 pos;
-        private bool gripButtonPressed = false;
-        private bool inHand = false;
 
         void Start()
         {
-            Utilla.Events.GameInitialized += OnGameInitialized;
+            Events.GameInitialized += OnGameInitialized;
             Debug.Log("Grongle is cool B)");
         }
 
@@ -41,27 +34,30 @@ namespace GravGrongle
             HarmonyPatches.RemoveHarmonyPatches();
         }
 
+        public static GameObject gronglePrefab;
+
         void OnGameInitialized(object sender, EventArgs e)
         {
             var fileStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("GravGrongle.Resources.gronglebundle");
             var bundle = AssetBundle.LoadFromStream(fileStream);
 
-            var grongleResource = bundle.LoadAsset("gronglemodel") as GameObject;
+            gronglePrefab = bundle.LoadAsset("gronglemodel") as GameObject;
 
-            GameObject grongle = Instantiate(grongleResource);
-            grongle.AddComponent<OTL>();
-            grongle.SetLayer(UnityLayer.Prop);
-            grongle.AddComponent<DevHoldable>();
-
-            MeshCollider meshCollider = grongle.AddComponent<MeshCollider>();
-            meshCollider.sharedMesh = grongle.GetComponent<MeshFilter>().mesh;
+            MeshCollider meshCollider = gronglePrefab.AddComponent<MeshCollider>();
+            meshCollider.sharedMesh = gronglePrefab.GetComponent<MeshFilter>().mesh;
             meshCollider.convex = true;
 
-            Rigidbody rb = grongle.AddComponent<Rigidbody>();
+            Rigidbody rb = gronglePrefab.AddComponent<Rigidbody>();
             rb.mass = 1f;
             rb.drag = 0.5f;
             rb.angularDrag = 0.5f;
             rb.useGravity = true;
+            gronglePrefab.SetLayer(UnityLayer.Prop);
+
+
+            GameObject grongle = Instantiate(gronglePrefab);
+            grongle.AddComponent<OTL>();
+            grongle.AddComponent<DevHoldable>();
 
             Debug.Log("Grongle collider size: " + meshCollider.bounds.size);
             Debug.Log("Grongle rigidbody mass: " + rb.mass);
@@ -75,17 +71,15 @@ namespace GravGrongle
             grongleButton.AddComponent<MeshRenderer>();
             grongleButton.GetComponent<MeshRenderer>().material.shader = Shader.Find("GorillaTag/UberShader");
             grongleButton.AddComponent<MeshCollider>();
-        }
-
-
-        void Update()
-        {
-        
+            gameObject.AddComponent<GrongleNetworking>();
         }
 
         [ModdedGamemodeJoin]
         public void OnJoin(string gamemode)
         {
+            var table = new ExitGames.Client.Photon.Hashtable();
+            table.Add(GrongleNetworking.modName, PluginInfo.Version);
+            PhotonNetwork.LocalPlayer.SetCustomProperties(table);
             inRoom = true;
         }
 

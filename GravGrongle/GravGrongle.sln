@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.5.33516.290
+VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GravGrongle", "GravGrongle.csproj", "{1BDF1E3C-918A-4A00-9352-5B6EFAAAED41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GravGrongle", "GravGrongle.csproj", "{F0114A5E-530D-4585-A70B-8928140198A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{1BDF1E3C-918A-4A00-9352-5B6EFAAAED41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1BDF1E3C-918A-4A00-9352-5B6EFAAAED41}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1BDF1E3C-918A-4A00-9352-5B6EFAAAED41}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1BDF1E3C-918A-4A00-9352-5B6EFAAAED41}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0114A5E-530D-4585-A70B-8928140198A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0114A5E-530D-4585-A70B-8928140198A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0114A5E-530D-4585-A70B-8928140198A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0114A5E-530D-4585-A70B-8928140198A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {737E736E-44C9-440C-91A8-90C97AC18A44}
+		SolutionGuid = {95CC51EA-0323-466D-B140-39CDD83DA98A}
 	EndGlobalSection
 EndGlobal

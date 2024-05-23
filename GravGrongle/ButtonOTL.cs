@@ -7,7 +7,7 @@ namespace GravGrongle
         public Vector3 pos;
 
         public static ButtonOTL Instance;
-        public void Start()
+        public void Start() //Initial position for the button
         {
             Vector3 newPosition = new Vector3(-65.3796f, 11.9504f, -81.414f);
             transform.position = newPosition;

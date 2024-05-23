@@ -32,6 +32,7 @@ namespace GravGrongle
         void OnDisable()
         {
             HarmonyPatches.RemoveHarmonyPatches();
+            Debug.Log("I don't think that'll do anything (GRONGLE 4EVER!");
         }
 
         public static GameObject gronglePrefab;

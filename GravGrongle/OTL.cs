@@ -7,7 +7,7 @@ namespace GravGrongle
         public Vector3 pos;
 
         public static OTL Instance;
-        public void Start()
+        public void Start() //Initial position for Grongle
         {
             Vector3 newPosition = new Vector3(-65.3796f, 11.814f, -81.414f);
             transform.position = newPosition;
